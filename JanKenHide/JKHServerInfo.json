@@ -1,1 +1,1 @@
-{"FixedRegion":"","UseNameServer":false,"AppIdRealtime":"8f381c8e-3527-4407-9a63-0ec3910864ba","Server":"192.168.121.205","Port":5055}
+{"FixedRegion":"cn","UseNameServer":true,"AppIdRealtime":"8f381c8e-3527-4407-9a63-0ec3910864ba","Server":"ns.photonengine.cn","Port":5055}
