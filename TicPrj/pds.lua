@@ -5,12 +5,12 @@
 
 stat={title=0,game=1,result=2,trans=-1}
 emap={pass=0,block=1,indoor=2}
-ingame={move=0,talk=1}
+ingame={enter=0,move=1,talk=2}
 
 gstat=stat.title
 gtick=0
 
-gingame=ingame.move
+gingame=ingame.enter
 
 role=
 {
@@ -27,6 +27,11 @@ gmap=
 {
  wid=240,
 	hei=136
+}
+
+gtext=
+{
+ 
 }
 
 function TIC()
@@ -67,13 +72,18 @@ function stat_title()
 	print("Press A to start", 72,110,1)
 	
  if btnp(4,60,6) then
-		gstat=1
+		gstat=stat.game
 		trace("enter game")
 	end
 end
 
 function stat_game()
-	if gingame==ingame.move then
+ if gingame==ingame.enter then
+	 cls(4)
+	 gmap:draw()
+		role:draw()
+		show_text("It's 2030.12.31. Coconut Island San Francisco Studio.")
+	elseif gingame==ingame.move then
  	role:updateMove()
 
  	cls(4)
@@ -154,7 +164,23 @@ function role.updateMove(self)
 end
 
 function show_text(txt)
+ gingame=ingame.talk
+	--draw text bg
+	spr(496,0,80,0)
+	spr(496,0,128,0,1,2)
+	spr(496,232,80,0,1,1)
+	spr(496,232,128,0,1,3)
+	for i=1,28 do
+	 spr(497,i*8,80,0)
+		spr(497,i*8,128,0,1,2)
+	end
+	for i=1,5 do
+	 spr(497,0,80+i*8,0,1,0,3)
+		spr(497,232,80+i*8,0,1,0,1)
+	end
  --show text
+	rect(8,88,224,40,2)
+	--TODO
 end
 -- <TILES>
 -- 000:0000002000000002022222220200000020000000000222220000000000000000
